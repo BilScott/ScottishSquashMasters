@@ -1,0 +1,401 @@
+/* Import shared theme styles */
+@import '../styles/theme.css';
+
+/* MHI specific styles */
+.mhi-container {
+  width: 100%;
+}
+
+/* Information grid layout */
+.mhi-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Card styling */
+.mhi-card {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  max-width: 100%; /* Ensure card doesn't exceed its grid cell */
+}
+
+.mhi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Center card headers in MHI page */
+.card-header {
+  text-align: center;
+  padding: 15px;
+  background-color: #003D7E;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+/* Card content container */
+.card-content {
+  padding: 20px;
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  max-width: 100%; /* Ensure content doesn't exceed container width */
+  overflow: visible;
+  color: #333;
+}
+
+.card-content p,
+.card-content li,
+.card-content ul {
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.card-content p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* Replace selection-criteria styling with paragraph-based styling */
+.criteria-text {
+  position: relative;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.criteria-text::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #009FE3;
+}
+
+/* Event details */
+.mhi-event-details {
+  margin: 40px auto;
+}
+
+.mhi-event-details h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.event-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  overflow: hidden;
+}
+
+.event-header {
+  background-color: #003D7E;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.event-header h4 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.event-date {
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.event-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  word-wrap: break-word;
+  background-color: #f8f9fa;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  padding: 15px;
+}
+
+.info-group strong {
+  margin-bottom: 5px;
+  color: #003D7E;
+}
+
+.event-description {
+  padding: 20px;
+}
+
+.event-description p {
+  word-wrap: break-word;
+  margin-bottom: 15px;
+}
+
+/* Results section */
+.mhi-results {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.mhi-results h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.results-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.tab-button {
+  padding: 10px 25px;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #003D7E;
+  color: white;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.results-table thead {
+  background-color: #003D7E;
+  color: white;
+}
+
+.results-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.results-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: white;
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.results-table tbody tr:hover {
+  background-color: rgba(0, 61, 126, 0.03);
+}
+
+/* Teams section */
+.mhi-teams {
+  margin: 40px auto;
+}
+
+.mhi-teams h3 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.accordion {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.accordion-item {
+  border-bottom: 1px solid #eee;
+  background-color: white;
+}
+
+.accordion-header {
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header.active {
+  background-color: #003D7E;
+  color: white;
+}
+
+/* Accordion icon styling */
+.accordion-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.accordion-content {
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* Team list styling */
+.team-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.team-list li:last-child {
+  border-bottom: none;
+}
+
+/* Contact information styling */
+.contact-info {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+}
+
+.contact-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* Center the Home Internationals Schedule heading */
+.centered-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Home Internationals Schedule Table */
+.home-internationals-schedule {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.home-internationals-schedule h3 {
+  text-align: center;
+}
+
+.schedule-table-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+.schedule-table th {
+  background-color: #003D7E;
+  color: white;
+  text-align: center;
+  padding: 12px;
+}
+
+.schedule-table td {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.schedule-table .year-cell {
+  background-color: #003D7E;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.schedule-table a {
+  color: #009FE3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.schedule-table a:hover {
+  text-decoration: underline;
+}
+
+.table-legend {
+  font-size: 14px;
+  color: #555;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .schedule-table {
+    font-size: 12px;
+  }
+  
+  .schedule-table td, .schedule-table th {
+    padding: 8px 5px;
+  }
+}

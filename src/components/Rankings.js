@@ -29,19 +29,31 @@ function Rankings() {
     const fetchRankingsData = async () => {
       setLoading(true);
       try {
+        // Log the URL being fetched
+        const csvUrl = '/assets/data/24_25_rankings.csv';
+        console.log('Fetching CSV from:', csvUrl);
+        
         // Fetch the CSV file
-        const response = await fetch('/assets/data/24_25_rankings.csv');
+        const response = await fetch(csvUrl);
         if (!response.ok) {
-          throw new Error('Failed to fetch rankings data');
+          throw new Error(`Failed to fetch rankings data: ${response.status} ${response.statusText}`);
         }
         
         const csvText = await response.text();
+        console.log('CSV data first 100 chars:', csvText.substring(0, 100)); // Log sample of CSV data
+        
         const parsedData = parseCSV(csvText);
+        console.log('Parsed data sample:', parsedData.slice(0, 2)); // Log sample of parsed data
+        
         const organizedData = organizeRankingsData(parsedData);
+        console.log('Organized data keys:', Object.keys(organizedData));
+        console.log('Available men age groups:', Object.keys(organizedData.men || {}));
+        console.log('Available women age groups:', Object.keys(organizedData.women || {}));
         
         setRankingsData(organizedData);
         setLoading(false);
       } catch (error) {
+        console.error('Error fetching rankings data:', error);
         setError(error.message);
         setLoading(false);
       }

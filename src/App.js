@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Events from './components/Events';
 import Rankings from './components/Rankings';
 import ScrollToTop from './components/ScrollToTop';
+import MHI from './components/MHI'; // Add MHI to your imports
 // Import the logo image
 import logo from './assets/images/logo.jpg';
 
@@ -78,6 +79,9 @@ function App() {
                 <li><NavLink to="/" onClick={closeMenu} end>Home</NavLink></li>
                 <li><NavLink to="/events" onClick={closeMenu}>Events</NavLink></li>
                 <li><NavLink to="/rankings" onClick={closeMenu}>Rankings</NavLink></li>
+                <li><NavLink to="/home-internationals" onClick={closeMenu} className={({isActive}) => isActive ? 'active' : ''}>
+                  Home Internationals
+                </NavLink></li>
                 <li><NavLink to="/about" onClick={closeMenu}>About</NavLink></li>
                 <li><NavLink to="/contact" onClick={closeMenu}>Contact</NavLink></li>
               </ul>
@@ -93,6 +97,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/events" element={<Events />} />
               <Route path="/rankings" element={<Rankings />} />
+              <Route path="/home-internationals" element={<MHI />} /> {/* Add the new route */}
               {/* Add routes for About and Contact when components are created */}
             </Routes>
           </div>
