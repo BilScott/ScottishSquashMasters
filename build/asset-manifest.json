@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/ScottishSquashMasters/static/css/main.bfe8b793.css",
+    "main.js": "/ScottishSquashMasters/static/js/main.12805997.js",
+    "static/js/453.b13d7023.chunk.js": "/ScottishSquashMasters/static/js/453.b13d7023.chunk.js",
+    "static/media/logo.jpg": "/ScottishSquashMasters/static/media/logo.760e68b338d4ab49add4.jpg",
+    "index.html": "/ScottishSquashMasters/index.html",
+    "main.bfe8b793.css.map": "/ScottishSquashMasters/static/css/main.bfe8b793.css.map",
+    "main.12805997.js.map": "/ScottishSquashMasters/static/js/main.12805997.js.map",
+    "453.b13d7023.chunk.js.map": "/ScottishSquashMasters/static/js/453.b13d7023.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bfe8b793.css",
+    "static/js/main.12805997.js"
+  ]
+}

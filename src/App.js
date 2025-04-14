@@ -50,7 +50,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router basename="/repository">
       <ScrollToTop /> {/* Add ScrollToTop component here */}
       <div className="app">
         <header className={`app-header ${scrolled ? 'scrolled' : ''}`}>

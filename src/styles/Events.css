@@ -10,7 +10,7 @@
   font-family: Arial, sans-serif;
 }
 
-/.intro-text {
+.intro-text {
   margin-bottom: 20px;
   line-height: 1.5;
 }
@@ -61,7 +61,7 @@
   background-color: rgba(0, 61, 126, 0.03);
 }
 
-/.events-table tr:nth-child(even) {
+.events-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
