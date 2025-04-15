@@ -42,5 +42,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
-  }
+  },
+  "csvPath": "${process.env.PUBLIC_URL}/assets/data/24_25_rankings.csv"
 }
