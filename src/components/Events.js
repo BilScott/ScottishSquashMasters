@@ -1,132 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient';
 import '../styles/Events.css';
 
 function Events() {
+  const [events, setEvents] = useState([]);
+  const [error, setError] = useState('');
   const [showPastEvents, setShowPastEvents] = useState(false);
-  
-  // England Squash Masters events based on their forecast
-  const mastersEvents = [
-    {
-      id: 'esm-1',
-      title: "British Open Masters",
-      date: "21-26 May 2025",
-      venue: "The Hallamshire Tennis & Squash Club, Sheffield",
-      deadline: "23 April 2025",
-      status: "Coming Soon",
-      details: "The premier event in the Masters calendar",
-      link: "https://www.englandsquashmasters.co.uk/Events/EventDetails.aspx?@EventID=149"
-    },
-    {
-      id: 'esm-2',
-      title: "North of England Masters",
-      date: "13-15 September 2024",
-      venue: "Pontefract Squash Club",
-      deadline: "30 August 2024",
-      status: "Closed for Entry",
-      details: "Regional masters tournament",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=1"
-    },
-    {
-      id: 'esm-3',
-      title: "East of England Masters",
-      date: "11-13 October 2024",
-      venue: "Ipswich Sports Club",
-      deadline: "27 September 2024",
-      status: "Closed for Entry",
-      details: "Regional masters tournament",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=2"
-    },
-    {
-      id: 'esm-4',
-      title: "England Masters Home Internationals vs Scotland",
-      date: "25-27 April 2025",
-      venue: "National Squash Centre, Manchester",
-      deadline: "28 March 2025",
-      status: "Coming Soon",
-      details: "International team competition",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=10"
-    },
-    {
-      id: 'esm-5',
-      title: "West of England Masters",
-      date: "22-24 November 2024",
-      venue: "Exeter Golf & Country Club",
-      deadline: "8 November 2024",
-      status: "Open for Entry",
-      details: "Regional masters tournament",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=3"
-    },
-    {
-      id: 'esm-6',
-      title: "South of England Masters",
-      date: "17-19 January 2025",
-      venue: "St. George's Hill, Weybridge",
-      deadline: "3 January 2025",
-      status: "Coming Soon",
-      details: "Regional masters tournament",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=5"
-    },
-    {
-      id: 'esm-7',
-      title: "Midlands Masters",
-      date: "14-16 February 2025",
-      venue: "Wolverhampton Lawn Tennis & Squash Club",
-      deadline: "31 January 2025",
-      status: "Coming Soon",
-      details: "Regional masters tournament",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=6"
-    },
-    {
-      id: 'esm-8',
-      title: "England Masters National Championships",
-      date: "14-16 March 2025",
-      venue: "National Squash Centre, Manchester",
-      deadline: "28 February 2025",
-      status: "Coming Soon",
-      details: "National championships for all masters age categories",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=7"
-    },
-    {
-      id: 'esm-9',
-      title: "Masters Home Internationals - Ireland",
-      date: "11-13 April 2025",
-      venue: "Dublin, Ireland",
-      deadline: "14 March 2025",
-      status: "Coming Soon",
-      details: "International team competition in Ireland",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=8"
-    },
-    {
-      id: 'esm-10',
-      title: "European Masters Championships",
-      date: "4-7 June 2025",
-      venue: "Cologne, Germany",
-      deadline: "1 May 2025",
-      status: "Coming Soon",
-      details: "European championships for masters players from all countries",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=11"
-    },
-    {
-      id: 'esm-11',
-      title: "London Masters Open",
-      date: "10-12 October 2024",
-      venue: "Coolhurst Tennis & Squash Club, London",
-      deadline: "26 September 2024",
-      status: "Closed for Entry",
-      details: "Regional masters tournament",
-      link: "https://www.englandsquashmasters.co.uk/Site/Event.aspx?EventID=4"
-    },
-    {
-      id: 'esm-12',
-      title: "World Masters Squash Championships",
-      date: "18-25 August 2025",
-      venue: "To be confirmed",
-      deadline: "15 July 2025",
-      status: "Coming Soon",
-      details: "The premier international masters event held every two years",
-      link: "https://www.worldsquash.org/world-championships/"
+
+  useEffect(() => {
+    async function fetchEvents() {
+      const { data, error } = await supabase.from('events').select('*');
+      if (error) setError(error.message);
+      else setEvents(data);
     }
-  ];
+    fetchEvents();
+  }, []);
 
   // Helper function to parse date strings into Date objects
   const parseEventDate = (dateString) => {
@@ -183,7 +71,7 @@ function Events() {
     return event.status;
   };
 
-  const sortedEvents = [...mastersEvents].sort((a, b) => {
+  const sortedEvents = [...events].sort((a, b) => {
     const dateA = parseEventDate(a.date);
     const dateB = parseEventDate(b.date);
     return dateA - dateB;
