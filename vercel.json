@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/((?!.*\\..*).*)", "destination": "/" }
+    { "source": "/(.*)", "has": [{ "type": "missing", "missing": [{ "type": "file" }] }], "destination": "/" }
   ]
 }
