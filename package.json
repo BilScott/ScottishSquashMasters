@@ -1,6 +1,6 @@
 {
   "name": "scottish-squash-masters",
-  "homepage": "https://BilScott.github.io/ScottishSquashMasters",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
