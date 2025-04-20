@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "has": [{ "type": "missing", "missing": [{ "type": "file" }] }], "destination": "/" }
+    { "source": "/((?!static/|favicon.ico|manifest.json|robots.txt|.*\\..*).*)", "destination": "/" }
   ]
 }
